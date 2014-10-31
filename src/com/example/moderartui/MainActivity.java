@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import android.os.Build;
 
 public class MainActivity extends ActionBarActivity {
@@ -36,7 +37,8 @@ public class MainActivity extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.more_info) {
+			doMoreInfo();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -57,5 +59,15 @@ public class MainActivity extends ActionBarActivity {
 					false);
 			return rootView;
 		}
+	}
+	
+	private void doMoreInfo()
+	{
+		CharSequence text = "More info is not yet available!";
+		int duration = Toast.LENGTH_SHORT;
+
+		Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+		toast.show();
+		
 	}
 }
