@@ -3,6 +3,8 @@ package com.example.moderartui;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -43,6 +45,34 @@ public class MainActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	private void doMoreInfo()
+	{
+		// TODO: use a string resource to set titles, etc
+		AlertDialog.Builder moreInfoBuilder = new AlertDialog.Builder(this);
+		moreInfoBuilder.setTitle("Inspired by the works of artists such as\nPiet Mondrian and Ben Nicholson.");
+		moreInfoBuilder
+			.setMessage("Click below to learn more!")
+			.setCancelable(false)
+			.setPositiveButton("Visit MOMA",new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id) {
+					// TODO: stub out open web page
+					Toast toast = Toast.makeText(getApplicationContext(), 
+							"More info is not yet available!", 
+							Toast.LENGTH_SHORT);
+					toast.show();
+				}
+			})
+			.setNegativeButton("Not Now",new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog,int id) {
+				dialog.cancel();
+				}
+			});
+		
+		AlertDialog moreInfoDialog = moreInfoBuilder.create();
+		
+		moreInfoDialog.show();
+	}
 
 	/**
 	 * A placeholder fragment containing a simple view.
@@ -60,14 +90,5 @@ public class MainActivity extends ActionBarActivity {
 			return rootView;
 		}
 	}
-	
-	private void doMoreInfo()
-	{
-		CharSequence text = "More info is not yet available!";
-		int duration = Toast.LENGTH_SHORT;
 
-		Toast toast = Toast.makeText(getApplicationContext(), text, duration);
-		toast.show();
-		
-	}
 }
