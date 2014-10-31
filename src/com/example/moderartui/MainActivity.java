@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Build;
 
@@ -77,21 +79,25 @@ public class MainActivity extends ActionBarActivity {
 	
 	private void doMoreInfo()
 	{
-		// TODO: use a string resource to set titles, etc
 		AlertDialog.Builder moreInfoBuilder = new AlertDialog.Builder(this);
-		moreInfoBuilder.setTitle("Inspired by the works of artists such as\nPiet Mondrian and Ben Nicholson.");
+		
+		TextView textView = new TextView(this);
+		textView.setText(getString(R.string.info_title));
+		textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+		
+		// TODO: make the buttons nicer too
+
 		moreInfoBuilder
-			.setMessage("Click below to learn more!")
+			.setCustomTitle(textView)
 			.setCancelable(false)
-			.setPositiveButton("Visit MOMA",new DialogInterface.OnClickListener() {
+			.setPositiveButton(getString(R.string.info_visit_moma),new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int id) {
-					// TODO: stub out open web page
 					Intent browserIntent = new Intent(Intent.ACTION_VIEW, 
 							Uri.parse("http://www.moma.org/"));
 					startActivity(browserIntent);
 				}
 			})
-			.setNegativeButton("Not Now",new DialogInterface.OnClickListener() {
+			.setNegativeButton(getString(R.string.info_not_now),new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog,int id) {
 				dialog.cancel();
 				}
@@ -100,23 +106,6 @@ public class MainActivity extends ActionBarActivity {
 		AlertDialog moreInfoDialog = moreInfoBuilder.create();
 		
 		moreInfoDialog.show();
-	}
-
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-	public static class PlaceholderFragment extends Fragment {
-
-		public PlaceholderFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_main, container,
-					false);
-			return rootView;
-		}
 	}
 
 }
