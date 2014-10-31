@@ -5,26 +5,55 @@ import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Toast;
 import android.os.Build;
 
 public class MainActivity extends ActionBarActivity {
+	
+	private SeekBar _seekBar = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		if (savedInstanceState == null) {
-			getSupportFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
-		}
+		setContentView(R.layout.fragment_main);
+		
+		_seekBar = (SeekBar) findViewById(R.id.seekbar);
+		_seekBar.setOnSeekBarChangeListener(new seekBarListener());
 	}
+	
+	private void changeColors(int colorIndex)
+	{
+		// TODO: set the colors
+		Toast.makeText(MainActivity.this,"Seek color set:"+colorIndex, 
+				Toast.LENGTH_SHORT).show();
+	}	
+	
+	private class seekBarListener implements SeekBar.OnSeekBarChangeListener {
+		
+		int progressChanged = 0;
+
+        public void onProgressChanged(SeekBar seekBar, int progress,
+                boolean fromUser) {
+        	progressChanged = progress;
+        }
+
+        public void onStartTrackingTouch(SeekBar seekBar) {}
+
+        public void onStopTrackingTouch(SeekBar seekBar) {
+        	changeColors(progressChanged);
+        }
+
+    }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -57,10 +86,9 @@ public class MainActivity extends ActionBarActivity {
 			.setPositiveButton("Visit MOMA",new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int id) {
 					// TODO: stub out open web page
-					Toast toast = Toast.makeText(getApplicationContext(), 
-							"More info is not yet available!", 
-							Toast.LENGTH_SHORT);
-					toast.show();
+					Intent browserIntent = new Intent(Intent.ACTION_VIEW, 
+							Uri.parse("http://www.moma.org/"));
+					startActivity(browserIntent);
 				}
 			})
 			.setNegativeButton("Not Now",new DialogInterface.OnClickListener() {
