@@ -1,76 +1,86 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
     android:background="#000000"
-
-
     tools:context="com.example.moderartui.MainActivity$PlaceholderFragment" >
     
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:layout_marginLeft="1dp"
-        android:layout_marginRight="4dp"
-        >
-        
-        <TextView
-        android:layout_width="match_parent"
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="#C0D0E0"
-        android:layout_marginBottom="4dp"        
-        android:text="@string/hello_world" />
-        
-        <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="#E0D0C0"
-        android:layout_marginTop="4dp"
-        android:text="@string/hello_world2" />
-        
-    </LinearLayout>
-    
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="1dp"
-        >
-    
-    	<TextView
-        	android:text="@string/hello_world"
-        	android:layout_width="match_parent"
-        	android:layout_weight="1"
-        	android:background="#F00000"
-        	android:layout_marginBottom="4dp"
-        	android:layout_height="wrap_content" />
-    
-        <TextView
-    		android:text="@string/hello_world2"
-    		android:layout_width="match_parent"
-    		android:layout_weight="1"
-    		android:background="#DEDEDE"
-    		android:layout_marginTop="4dp"
-    		android:layout_marginBottom="4dp"
-    		android:layout_height="wrap_content" />
-        
-        <TextView
-        	android:text="@string/hello_world3"
-        	android:layout_width="match_parent"
-        	android:layout_weight="1"
-        	android:background="#0000F0"
-        	android:layout_marginTop="4dp"
-        	android:layout_height="wrap_content" />
-        
-     </LinearLayout>
-        
-        
+        android:layout_alignParentBottom="true"
+        android:text="@string/hello_world3" />
 
-	</LinearLayout>
+    <LinearLayout
+        android:id="@+id/artything"
+        android:layout_above="@id/seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+	        android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+	        android:layout_weight="2"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="4dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#C0D0E0"
+		        android:layout_marginBottom="4dp"        
+                android:text="@string/hello_world" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#E0D0C0"
+        		android:layout_marginTop="4dp"
+                android:text="@string/hello_world2" />
+        </LinearLayout>
+
+        <LinearLayout
+        	android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+        	android:layout_weight="1"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="1dp">
+
+            <TextView
+        		android:text="@string/hello_world"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:background="#F00000"
+        		android:layout_marginBottom="4dp"
+		      	android:layout_height="wrap_content" />
+
+            <TextView
+    			android:text="@string/hello_world2"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:background="#DEDEDE"
+	    		android:layout_marginTop="4dp"
+	    		android:layout_marginBottom="4dp"
+	    		android:layout_height="wrap_content" />
+
+            <TextView
+        		android:text="@string/hello_world3"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:background="#0000F0"
+        		android:layout_marginTop="4dp"
+        		android:layout_height="wrap_content" />
+        
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</RelativeLayout>
