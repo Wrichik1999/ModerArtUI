@@ -32,6 +32,7 @@ public class MainActivity extends ActionBarActivity {
 	private View t4 = null;
 	private View t5 = null;
 	
+	private int[][] colors;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,40 +47,92 @@ public class MainActivity extends ActionBarActivity {
 		t3 = findViewById(R.id.t3);
 		t4 = findViewById(R.id.t4);
 		t5 = findViewById(R.id.t5);
+		
+		colors = new int[5][6];
+		initColors();
+		
+		t4.setOnClickListener(new View.OnClickListener() {
+		    @Override
+		    public void onClick(View v) {
+		    	initColors();
+		    	_seekBar.setProgress(0);
+		    }
+		});
+		
 	}
 	
-	private void changeColors(int colorIndex)
+	private void initColors()
 	{
+		
 		Random rnd = new Random(); 
-		int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));   
-		t1.setBackgroundColor(color);
-		color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-		t2.setBackgroundColor(color);
-		color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-		t3.setBackgroundColor(color);
-		color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-		t5.setBackgroundColor(color);
 		
-		// t4 will be grayish to whiteish
-		int w = 156+rnd.nextInt(100);
-		color = Color.argb(255, w,w,w);
-		t4.setBackgroundColor(color);
+		for( int i=0;i<5;i++)
+		{
+			if (i==3) continue;
+			for (int j=0;j<6;j++)
+			{
+				colors[i][j]=rnd.nextInt(256);
+			}
+		}
 		
-	}	
+		int w;
+		w = 200+rnd.nextInt(56);
+		colors[3][0] = w;
+		colors[3][1] = w;
+		colors[3][2] = w;
+		
+		w = 200+rnd.nextInt(56);
+		colors[3][3] = w;
+		colors[3][4] = w;
+		colors[3][5] = w;
+		
+		setColors(0);
+	}
+	
+	private void setColors(int pct)
+	{
+		int r,g,b,color;
+		
+		for (int i=0;i<5;i++)
+		{
+			r = colors[i][0] + (colors[i][3] - colors[i][0])*pct/100;
+			g = colors[i][1] + (colors[i][4] - colors[i][1])*pct/100;
+			b = colors[i][2] + (colors[i][5] - colors[i][2])*pct/100;
+			color = Color.argb(255,r,g,b);
+			
+			switch (i)
+			{
+			case 0:
+				t1.setBackgroundColor(color);
+				break;
+			case 1:
+				t2.setBackgroundColor(color);
+				break;
+			case 2:
+				t3.setBackgroundColor(color);
+				break;
+			case 3:
+				t4.setBackgroundColor(color);
+				break;
+			case 4:
+				t5.setBackgroundColor(color);
+				break;
+			}
+		}
+		
+	}
 	
 	private class seekBarListener implements SeekBar.OnSeekBarChangeListener {
 		
-		int progressChanged = 0;
-
         public void onProgressChanged(SeekBar seekBar, int progress,
                 boolean fromUser) {
-        	progressChanged = progress;
+        		setColors(progress);
         }
 
         public void onStartTrackingTouch(SeekBar seekBar) {}
 
         public void onStopTrackingTouch(SeekBar seekBar) {
-        	changeColors(progressChanged);
+        	// changeColors(progressChanged);
         }
 
     }
@@ -114,7 +167,7 @@ public class MainActivity extends ActionBarActivity {
 		
 		// TODO: make the buttons nicer too
 		// well, this is going to take more time than I have this weekend
-		// but the approach wold be to create a custom them and apply it
+		// but the approach would be to create a custom theme and apply it
 		// to the dialog.  Not enough time to put all the monkeys in the barrel.
 
 		moreInfoBuilder
