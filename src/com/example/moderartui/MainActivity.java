@@ -2,9 +2,11 @@ package com.example.moderartui;
 
 import java.util.Random;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
+
+// import android.support.v7.app.ActionBarActivity;
+// import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,8 +24,9 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Build;
+import android.app.ActionBar;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 	
 	private SeekBar _seekBar = null;
 	private View t1 = null;
