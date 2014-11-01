@@ -113,6 +113,9 @@ public class MainActivity extends ActionBarActivity {
 		textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
 		
 		// TODO: make the buttons nicer too
+		// well, this is going to take more time than I have this weekend
+		// but the approach wold be to create a custom them and apply it
+		// to the dialog.  Not enough time to put all the monkeys in the barrel.
 
 		moreInfoBuilder
 			.setCustomTitle(textView)

@@ -9,8 +9,7 @@
         android:id="@+id/seekbar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="@string/hello_world3" />
+        android:layout_alignParentBottom="true" />
 
     <LinearLayout
         android:id="@+id/artything"
@@ -34,8 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="#C0D0E0"
-		        android:layout_marginBottom="4dp"        
-                android:text="@string/hello_world" />
+		        android:layout_marginBottom="4dp"  />
 
             <TextView
                 android:id="@+id/t2"
@@ -43,8 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="#E0D0C0"
-        		android:layout_marginTop="4dp"
-                android:text="@string/hello_world2" />
+        		android:layout_marginTop="4dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -57,7 +54,6 @@
 
             <TextView
                 android:id="@+id/t3"
-        		android:text="@string/hello_world"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:background="#F00000"
@@ -66,7 +62,6 @@
 
             <TextView
                 android:id="@+id/t4"
-    			android:text="@string/hello_world2"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:background="#DEDEDE"
@@ -76,7 +71,6 @@
 
             <TextView
                 android:id="@+id/t5"
-        		android:text="@string/hello_world3"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:background="#0000F0"
