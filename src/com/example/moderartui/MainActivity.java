@@ -1,11 +1,14 @@
 package com.example.moderartui;
 
+import java.util.Random;
+
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -23,6 +26,12 @@ import android.os.Build;
 public class MainActivity extends ActionBarActivity {
 	
 	private SeekBar _seekBar = null;
+	private View t1 = null;
+	private View t2 = null;
+	private View t3 = null;
+	private View t4 = null;
+	private View t5 = null;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +40,31 @@ public class MainActivity extends ActionBarActivity {
 		
 		_seekBar = (SeekBar) findViewById(R.id.seekbar);
 		_seekBar.setOnSeekBarChangeListener(new seekBarListener());
+		
+		t1 = findViewById(R.id.t1);
+		t2 = findViewById(R.id.t2);
+		t3 = findViewById(R.id.t3);
+		t4 = findViewById(R.id.t4);
+		t5 = findViewById(R.id.t5);
 	}
 	
 	private void changeColors(int colorIndex)
 	{
-		// TODO: set the colors
-		Toast.makeText(MainActivity.this,"Seek color set:"+colorIndex, 
-				Toast.LENGTH_SHORT).show();
+		Random rnd = new Random(); 
+		int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));   
+		t1.setBackgroundColor(color);
+		color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+		t2.setBackgroundColor(color);
+		color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+		t3.setBackgroundColor(color);
+		color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+		t5.setBackgroundColor(color);
+		
+		// t4 will be grayish to whiteish
+		int w = 156+rnd.nextInt(100);
+		color = Color.argb(255, w,w,w);
+		t4.setBackgroundColor(color);
+		
 	}	
 	
 	private class seekBarListener implements SeekBar.OnSeekBarChangeListener {
